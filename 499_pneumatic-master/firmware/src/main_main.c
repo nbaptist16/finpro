@@ -64,7 +64,8 @@ int main() {
 //    TRISBbits.TRISB13 = 0;          // RB13 as output
     
     TRISBbits.TRISB10 = 0;          // RB10 as output
-    LATBbits.LATB10 = 1;            // set RB10 as high
+//    LATBbits.LATB10 = 1;            // set RB10 as high
+    LATBbits.LATB10 = 0;            // set RB10 as high
 
     init_pic();
     
@@ -85,15 +86,15 @@ int main() {
 //        LATBbits.LATB12 = 1;   // B12 is high (PHase; GPIO)
         LATBbits.LATB12 = 0;   // B12 is low (PHase; GPIO)
         
-        RPB13R = 0b0110;       // B13 is set  (ENable; PWM)
+        RPB13Rbits.RPB13R = 0b0110;       // B13 is set  (ENable; PWM)
 //        TRISBbits.TRISB11 = 0;
 //        RPB11R = 0b0110;       // B13 is set  (ENable; PWM)
 //        LATBbits.LATB12 = 0;   // B12 is low
 //        LATBbits.LATB13 = 0;   // B13 is low
         T2CONbits.TCKPS = 2;     // set the timer prescaler so that you can use the largest PR2 value as possible without going over 65535 and the frequency is 50Hz
 //        T2CONbits.TCKPS = 5;     // 11 = 1:256 prescale value
-//        PR2 = 62499; // period = (PR2+1) * N * 12.5 ns = 0.02 s, 50 Hz=> (PR2+1) * N = 16,000,000 => N=256, PR2 = 62499
-        PR2 = 3125;
+        PR2 = 62499; // period = (PR2+1) * N * 12.5 ns = 0.02 s, 50 Hz=> (PR2+1) * N = 16,000,000 => N=256, PR2 = 62499
+//        PR2 = 3125;
         TMR2 = 0;                // initial TMR2 count is 0
         OC5CONbits.OCM = 0b110;  // PWM mode without fault pin; other OCxCON bits are defaults
         OC5RS = 0;             // duty cycle = OCxRS/(PR2+1) default to 0
@@ -101,8 +102,27 @@ int main() {
         OC5R = 1;
         T2CONbits.ON = 1;        // turn on Timer2
         OC5CONbits.ON = 1;       // turn on OCx
+        //------------------------
+        /* added second output compare for pres reg control*/
+        RPB11Rbits.RPB11R = 0b0101; // Set pin B11 to OC4
+        T3CONbits.TCKPS = 2;     // set the timer prescaler so that you can use the largest PR2 value as possible without going over 65535 and the frequency is 50Hz
+//        T2CONbits.TCKPS = 5;     // 11 = 1:256 prescale value
+//        PR3 = 62499; // period = (PR2+1) * N * 12.5 ns = 0.02 s, 50 Hz=> (PR2+1) * N = 16,000,000 => N=256, PR2 = 62499
+        PR3 = 3125;
+        TMR3 = 0;                // initial TMR2 count is 0
+        OC4CONbits.OCM = 0b110;  // PWM mode without fault pin; other OCxCON bits are defaults
+        OC4RS = 0;             // duty cycle = OCxRS/(PR2+1) default to 0
+//        OC5R = 0;              // initialize before turning OCx on; afterward it is read-only
+        OC4R = 1;
+        T3CONbits.ON = 1;        // turn on Timer2
+        OC4CONbits.ON = 1;       // turn on OCx
+        OC4CONbits.OCM = 0b110;  // PWM mode without fault pin; other OCxCON bits are defaults
+        OC4RS = 0;             // duty cycle = OCxRS/(PR2+1) default to 0
+//        OC5R = 0;              // initialize before turning OCx on; afterward it is read-only
+        OC4R = 1;
+        OC4CONbits.ON = 1;       // turn on OCx
+        /*end*/
         __builtin_enable_interrupts();
-        
         
         void delay(unsigned long int time){
                 _CP0_SET_COUNT(0);
@@ -151,10 +171,12 @@ int main() {
 //        delay(dt);
         
 //        OC5RS = 50;      // too small
-//        OC5RS = 40000;      // works
-        OC5RS = 1600;
+        OC5RS = 40000;      // works
+//        OC5RS = 1600;   //for solenoid i think
 //        OC5RS = 2000;
 //        OC5RS = 3000;
+//        OC4RS = 40000;
+        OC4RS = 3000;   // for pres reg i think but who really knows
         
         
 //      end
