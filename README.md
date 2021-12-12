@@ -1,11 +1,18 @@
 <p align="center">
 <img src="ref/controls.jpg" alt="yampad_top" width="300"/><br>
 </p>
-<p><img align="left" style="padding: 10px;" src="ref/rsclab.png" alt="RSCLAB" width="75"/><p align="left">Portable, Automatable, MRI-Compatible Tactile Stimulation Device<hr><small>A device to aid the Robotics and Sensorimotor Control Lab’s efforts in improving our understanding of human somatosensory perception in their upper limbs</small><br></p></p>
+<p><img align="left" style="padding: 10px;" src="ref/rsclab.png" alt="RSCLAB" width="75"/><p align="left">Portable, Automatable, MRI-Compatible Tactile Stimulation Device
+<hr>
+<small>
+    A device to aid the Robotics and Sensorimotor Control Lab’s efforts in improving our understanding of human somatosensory perception in their upper limbs
+</small>
+<br></p></p>
 
 <hr style="text-align:left;margin-left:0;color:limegreen;">
 <small><br></small>
-<p>This research project contributed to the Robotics and Sensorimotor Control Lab’s efforts in improving our understanding of human somatosensory perception in their upper limbs. The overall project goal is to identify the reason for tactile perception deficits in individuals with stroke. My contribution to this project was to advance a proof-of-concept mechatronic device to one that could be used for pilot testing. My contributions to this project include developing the hardware and software to permit automated control of the mechanical stimuli applied to an individual’s fingertip. The system now includes, in addition to the actuator fabricated in the previous quarter, a pressure regulator, pressure sensor, PIC32-powered controller, and serial communication via a computer for automated control of and data collection from the device.</p>
+<p>
+    This research project contributed to the Robotics and Sensorimotor Control Lab’s efforts in improving our understanding of human somatosensory perception in their upper limbs. The overall project goal is to identify the reason for tactile perception deficits in individuals with stroke. My contribution to this project was to advance a proof-of-concept mechatronic device to one that could be used for pilot testing. My contributions to this project include developing the hardware and software to permit automated control of the mechanical stimuli applied to an individual’s fingertip. The system now includes, in addition to the actuator fabricated in the previous quarter, a pressure regulator, pressure sensor, PIC32-powered controller, and serial communication via a computer for automated control of and data collection from the device
+</p>
 <small>Project completed as MSR Final Project '21</small>
 
 <small><br></small>
@@ -45,6 +52,8 @@
     • Jumper wires<br>
     • <a href="https://www.digikey.com/en/products/detail/honeywell-sensing-and-productivity-solutions/SSCDANN150PGAA5/2416090" target="_blank" style="margin: auto;">Honeywell pressure sensor</a><br>
     • <a href="https://oshpark.com/uploads/NTNtA6Eg" target="_blank" style="margin: auto;">Finpro PCB!</a><br>
+    &emsp;&emsp; • note: the gerber files are included in as CAMOutputs.zip. Please be sure to install Eagle for any adjustments of the .sch and .brd files.
+    <br>
     <i>Hardware:</i><br>
     • <a href="https://www.mcmaster.com/8546K17/" target="_blank" style="margin: auto;">1-1/4" Diameter Chemical-Resistant Slippery PTFE Rod (1')</a><br>
     • <a href="https://www.mcmaster.com/9262K974/" target="_blank" style="margin: auto;">2.62 mm Wide, 17.86 mm ID Oil-Resistant Buna-N O-Ring (pack of 25)</a><br>
@@ -155,6 +164,10 @@
 <br>
 
 <p><b>Programming</b></p>
+
+<p>
+    Before any programming, please install <a href="https://www.microchip.com/en-us/development-tools-tools-and-software/mplab-x-ide" target="_blank" style="margin: auto;">MPLAB® X IDE</a> to easily modify code, make, and program the device (PIC32).
+</p>
 
 <p>
     After cloning the source code from the github repository, program the PIC32 using the <code>main_main.c</code> file.
