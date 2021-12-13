@@ -96,11 +96,11 @@
     The acrylic sheet is then cut into pieces to assemble the controller box.
 </p>
 <p align="center">
-    <img src="src/top.svg" alt="top" width="300"> 
-    <img src="src/bottom.svg" alt="bottom" width="300"> 
-    <img src="src/front.svg" alt="front" width="300"> 
-    <img src="src/back.svg" alt="back" width="300"> 
-    <img src="src/side.svg" alt="side" width="300"> 
+    <img src="ref/top.svg" alt="top" width="300"> 
+    <img src="ref/bottom.svg" alt="bottom" width="300"> 
+    <img src="ref/front.svg" alt="front" width="300"> 
+    <img src="ref/back.svg" alt="back" width="300"> 
+    <img src="ref/side.svg" alt="side" width="300"> 
 </p>
 <p>
     All pieces except for the back are adhered together with an acrylic adhesive. It is suggested to temporarily hold the pieces together with tape while they dry. The back piece is simply held on with a piece of tape to allow continued access to the screw terminals and the designated SNAP headers.
